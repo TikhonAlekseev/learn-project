@@ -1,0 +1,14 @@
+<div class="chat" *ngIf="selectedRoom.length; else default">
+    <h1>Выбран чат: {{selectedRoom}}</h1>
+    <div class="chat_content">
+        <chat-message *ngFor="let message of messages" [data]="message"></chat-message>
+    </div>
+    <form class="form">
+        <input name="message" class="form_input" [(ngModel)]="currentInputText"/>
+        <button class="form_submit" (click)="onSubmitMessage($event)">Отправить</button>
+    </form>
+</div>
+
+<ng-template #default >
+    <h1>Выберите комнату для общения</h1>
+</ng-template>

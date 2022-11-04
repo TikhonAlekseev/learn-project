@@ -1,0 +1,27 @@
+<div class="aside">
+    <div class="aside_header">
+        <h2 *ngIf="rooms.length > 0; else default">{{title}}</h2>
+        <ng-template #default>
+            <h2>Список комнат пуст</h2>
+        </ng-template>
+        <button type="button" (click)="handleCreateRoom()">
+            Создать комнату
+        </button>
+        <input type="text" name="room" [(ngModel)]="nameNewRoom">
+    </div>
+    
+    <div class="aside_content">
+        <div class="rooms_list">
+            <button 
+                class="rooms_list_item" 
+                *ngFor="let room of rooms" 
+                [id]="room['id']"
+                (click)="handleSelectRoom(room['id'])"
+            >
+                <b>{{room['name']}}</b>
+
+                <button [id]="room['id']" type="button" (click)="handleRemoveRoom(room['id'])">Удалить</button>
+            </button>
+        </div>
+    </div>
+</div>

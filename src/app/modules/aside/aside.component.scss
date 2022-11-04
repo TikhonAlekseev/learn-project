@@ -1,0 +1,33 @@
+.aside{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    padding: 20px;
+
+    &_header{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+}
+
+.rooms_list{
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+    overflow: auto;
+
+    &_item{
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        border: 1px solid #000;
+        margin-bottom: 20px;
+        cursor: pointer;
+
+        &:hover{
+            background-color: rgb(105, 98, 98);
+            color: white;
+        }
+    }
+}
