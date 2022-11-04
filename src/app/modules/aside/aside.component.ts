@@ -15,7 +15,7 @@ export class AsideComponent implements OnInit {
 
   public rooms: Room[] = []
 
-  public selectedRoom: string = '';
+  public selectedIdRoom: string = '';
 
   public title: string = "Список групп";
 
@@ -23,6 +23,7 @@ export class AsideComponent implements OnInit {
   
   ngOnInit(): void {
     this.rooms = this.roomService.getAllRooms();
+    this.roomService.selectedRoom.subscribe(value => this.selectedIdRoom = value.id )
   }
 
   public handleSelectRoom(id: string){

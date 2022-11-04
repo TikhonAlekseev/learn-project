@@ -13,7 +13,8 @@
     <div class="aside_content">
         <div class="rooms_list">
             <button 
-                class="rooms_list_item" 
+                class="rooms_list_item"
+                [class.rooms_list_item_selected]="room['id'] === selectedIdRoom"
                 *ngFor="let room of rooms" 
                 [id]="room['id']"
                 (click)="handleSelectRoom(room['id'])"
