@@ -12,7 +12,7 @@ export class MessageComponent implements OnInit {
   @Input() data:IMessage
 
   constructor() { 
-    this.data = { id: "", userId: "", text:"",date:'' } 
+    this.data = { id: "", userId: "", text:"",date:'',roomId:'' } 
   }
 
   ngOnInit(): void {
