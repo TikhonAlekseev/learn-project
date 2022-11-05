@@ -7,9 +7,18 @@ import { IUser } from '../types';
 export class UsersService {
   constructor() { }
 
-  private users: IUser[] = []
+  private currentUser = {
+    name:"Пользователь",
+    userId:"12",
+  };
 
-  public getUsers(idRoom:string) {
-    return this.users
+  private isAuth = false;
+
+  public login(){}
+
+  public logOut(){}
+
+  public getUser(){
+    return this.currentUser
   }
 }
