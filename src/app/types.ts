@@ -3,12 +3,12 @@ export interface IMessage{
     userId: string,
     text: string,
     date:string,
+    roomId:string,
 }
 
 export interface IUser {
     userId:string,
     name:string,
-    messages: IMessage[]
 }
 
 export interface Room {
