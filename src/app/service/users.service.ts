@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser } from '../types';
+import { IUser, UserData } from '../types';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,17 @@ export class UsersService {
     userId:"12",
   };
 
-  private isAuth = false;
+  public isAuth = false;
 
-  public login(){}
+  public login(userData:UserData){
+    console.log(userData,'login')
+  }
 
   public logOut(){}
+
+  public registration(userData:UserData){
+    console.log(userData,'registration')
+  }
 
   public getUser(){
     return this.currentUser

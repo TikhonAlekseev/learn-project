@@ -1,0 +1,11 @@
+<div class="auth">
+    <h2>{{title}}</h2>
+    <form class="form"> 
+        <input *ngIf="!isRegist" name="name" [(ngModel)]="userData.name" class="auth_input" type="text" placeholder="name">
+        <input name="email" [(ngModel)]="userData.email" class="auth_input" type="email" placeholder="email">
+        <input name="password" [(ngModel)]="userData.password" class="auth_input" type="text" placeholder="password">
+        
+        <button *ngIf="!isRegist" (click)="registration()"  type="button">Зарегистрироваться</button>
+        <button *ngIf="isRegist" (click)="login()"  type="button">Войти</button>
+    </form>
+</div>

@@ -2,13 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { ChatComponent } from './modules/chat/chat.component';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './modules/header/header.component';
 import { AsideComponent } from './modules/aside/aside.component';
-import { ChatComponent } from './modules/chat/chat.component';
 import { RoomsService } from './service/rooms.service';
+import { FormsModule } from '@angular/forms';
 import { MessageComponent } from './modules/chat/components/message/message.component';
-import { FormsModule } from '@angular/forms'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthComponent } from './modules/auth/auth.component';
+
 @NgModule({
   //Здесь хранятся названия отдельных компонентов,каналы,директив которые используются
   //Нельзя объявлять один и тот же класс компонента в разных модулях
@@ -18,12 +21,13 @@ import { FormsModule } from '@angular/forms'
     AsideComponent,
     ChatComponent,
     MessageComponent,
-  ],
+    AuthComponent,],
   //Здесь испортируются различные необходимы модули
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
   ],
   //Здесь хранятся сервисы,их можно будет использовать во всем приложении
   providers: [RoomsService],

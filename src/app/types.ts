@@ -1,3 +1,4 @@
+
 export interface IMessage{
     id: string,
     userId: string,
@@ -14,4 +15,11 @@ export interface IUser {
 export interface Room {
     id:string,
     name:string,
+}
+
+
+export type UserData = {
+    name?:string,
+    email:string,
+    password:string,
 }

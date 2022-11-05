@@ -1,6 +1,10 @@
 <header class="header"></header>
 
-<main class="main">
-    <chat class="chat"></chat>
-    <aside class="aside"></aside>
+<main>
+    <div class="main" *ngIf="isAuth">
+        <chat class="chat"></chat>
+        <aside class="aside"></aside>
+    </div>
+
+    <auth *ngIf="!isAuth"></auth >
 </main>
