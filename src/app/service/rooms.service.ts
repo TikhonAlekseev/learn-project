@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Room } from '../types';
 
 @Injectable({
@@ -14,15 +14,15 @@ export class RoomsService {
   public selectedRoom = new Subject<Room>();
 
   private rooms = [
-    {id:"1", name:"Первая комната", },
-    {id:"2", name:"Вторая комната", },
-    {id:"3", name:"Третья комната", },
-    {id:"4", name:"Четвертая комната", },
-    {id:"5", name:"Пятая комната", },
-    {id:"6", name:"Шестая комната", },
-    {id:"7", name:"Седьмая комната", },
-    {id:"8", name:"Восьмая комната", },
-    {id:"9", name:"Девятая комната", },
+    {id:"1", name:"Первая комната"},
+    {id:"2", name:"Вторая комната"},
+    {id:"3", name:"Третья комната"},
+    {id:"4", name:"Четвертая комната"},
+    {id:"5", name:"Пятая комната"},
+    {id:"6", name:"Шестая комната"},
+    {id:"7", name:"Седьмая комната"},
+    {id:"8", name:"Восьмая комната"},
+    {id:"9", name:"Девятая комната"},
   ];
 
   public getAllRooms(): Room[] {

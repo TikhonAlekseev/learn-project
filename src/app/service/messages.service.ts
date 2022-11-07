@@ -15,37 +15,21 @@ export class MessagesService {
       userId: '1',
       text: "Привет!",
       date:'',
+      roomId:'1'
     },
-    {
-      id: '1',
-      userId: '1',
-      text: "Привет!",
-      date:'',
-    },
-    {
-      id: '1',
-      userId: '1',
-      text: "Привет!",
-      date:'',
-    },
-    {
-      id: '1',
-      userId: '1',
-      text: "Привет!",
-      date:'',
-    }
   ]
 
   public getMessages():IMessage[]  {
     return this.messages
   }
   
-  public onSubmitMessage(textMessage:string){
+  public onSubmitMessage(textMessage:string, roomId:string){
     this.messages.push({
       id: '1',
       userId: '1',
       text: textMessage,
       date:'',
+      roomId,
     })
   }
 }

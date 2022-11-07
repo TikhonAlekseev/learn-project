@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessagesService } from 'src/app/service/messages.service';
 import { RoomsService } from 'src/app/service/rooms.service';
-import { IMessage } from 'src/app/types';
+import { IMessage, Room } from 'src/app/types';
 
 @Component({
   selector: 'chat',
@@ -15,7 +15,7 @@ export class ChatComponent implements OnInit {
     private messagesService: MessagesService
   ) {}
 
-  public selectedRoom: string = "";
+  public selectedRoom:Room = {id:"", name:""};
 
   public currentInputText: string = "";
 
@@ -24,7 +24,7 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
 
     //Подписываемся на наблюдение изменений выбранной комнаты
-    this.roomService.selectedRoom.subscribe((value) => { this.selectedRoom = value.name })
+    this.roomService.selectedRoom.subscribe((value) => { this.selectedRoom = value })
 
     //Забираем все сообщения в данной комнате
     this.messages = this.messagesService.getMessages();
@@ -32,7 +32,7 @@ export class ChatComponent implements OnInit {
 
   onSubmitMessage(e:Event){
     e.preventDefault()
-    this.messagesService.onSubmitMessage(this.currentInputText)
+    this.messagesService.onSubmitMessage(this.currentInputText, this.selectedRoom.id)
     this.currentInputText = "";
   }
 }
