@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UsersService } from './service/users.service';
+import { AuthService } from './service/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,10 +8,9 @@ import { UsersService } from './service/users.service';
 
 export class AppComponent {
 
-  constructor(private usersService:UsersService){
-    this.isAuth = this.usersService.isAuth;
+  constructor(private authService:AuthService){
+    this.isAuth = this.authService.isAuth;
   }
-  title = 'Онлайн чат';
 
   isAuth = false;
 

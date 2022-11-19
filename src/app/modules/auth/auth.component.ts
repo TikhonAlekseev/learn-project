@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from 'src/app/service/users.service';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'auth',
@@ -8,7 +8,7 @@ import { UsersService } from 'src/app/service/users.service';
 })
 export class AuthComponent implements OnInit {
 
-  constructor(private usersService:UsersService) { }
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
   }
@@ -24,11 +24,11 @@ export class AuthComponent implements OnInit {
   }
 
   registration(){
-    this.usersService.registration(this.userData)
+    this.authService.regist(this.userData)
   }
 
   login(){
     const {email,password} = this.userData;
-    this.usersService.login({ email,password })
+    this.authService.login({ email,password })
   }
 }
