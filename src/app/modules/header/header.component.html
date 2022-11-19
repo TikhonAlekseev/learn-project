@@ -2,8 +2,7 @@
     <div class="logo">Онлайн чат</div>
     <div class="account">
         <div class="account__name">User</div>
-        <button type="button" class="account__button">Выйти</button>
-        <button type="button" class="account__button">Войти</button>
-
+        <button *ngIf="!isAuth" class="button" class="account__button">Выйти</button>
+        <button *ngIf="isAuth" type="button" class="account__button">Войти</button>
     </div>
 </div>
