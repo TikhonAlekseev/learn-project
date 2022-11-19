@@ -1,0 +1,12 @@
+<div class="auth">
+    <h2>{{hasAccount ?  'Авторизация': 'Регистрация'}}</h2>
+    <form class="form"> 
+        <input *ngIf="!hasAccount" name="name" [(ngModel)]="userData.name" class="auth_input" type="text" placeholder="name">
+        <input name="email" [(ngModel)]="userData.email" class="auth_input" type="email" placeholder="email">
+        <input name="password" [(ngModel)]="userData.password" class="auth_input" type="text" placeholder="password">
+        
+        <button *ngIf="!hasAccount" (click)="registration()"  type="button">Зарегистрироваться</button>
+        <button (click)="this.hasAccount = !hasAccount"  type="button">{{!hasAccount ? 'Уже есть аккаунт' : 'Вернуться к регистрации'}}</button>
+        <button *ngIf="hasAccount" (click)="login()"  type="button">Войти</button>
+    </form>
+</div>

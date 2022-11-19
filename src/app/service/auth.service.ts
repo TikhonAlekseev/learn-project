@@ -15,7 +15,7 @@ export class AuthService implements IAuthService{
 
   constructor() { }
 
-  isAuth:boolean = true;
+  isAuth:boolean = false;
 
   login(user: UserData){
     console.log(user,'user')

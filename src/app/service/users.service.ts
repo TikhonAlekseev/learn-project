@@ -12,18 +12,6 @@ export class UsersService {
     userId:"12",
   };
 
-  public isAuth = false;
-
-  public login(userData:UserData){
-    console.log(userData,'login')
-  }
-
-  public logOut(){}
-
-  public registration(userData:UserData){
-    console.log(userData,'registration')
-  }
-
   public getUser(){
     return this.currentUser
   }

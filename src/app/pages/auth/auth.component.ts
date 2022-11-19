@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
-  selector: 'auth',
+  selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
@@ -12,10 +12,10 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
-  isRegist = false;
 
-  title:string = this.isRegist ? 'Авторизация': 'Регистрация'
+  hasAccount = false;
+
+  title:string = this.hasAccount ? 'Авторизация': 'Регистрация'
 
   userData = {
     name:"",
@@ -31,4 +31,5 @@ export class AuthComponent implements OnInit {
     const {email,password} = this.userData;
     this.authService.login({ email,password })
   }
+
 }
