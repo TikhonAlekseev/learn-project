@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MessagesService } from 'src/app/service/messages.service';
 import { RoomsService } from 'src/app/service/rooms.service';
+import { SocketService } from 'src/app/service/socket.service';
 import { IMessage, Room } from 'src/app/types';
+import { WebSocketSubject } from 'rxjs/webSocket';
 
 @Component({
   selector: 'chat',
@@ -12,27 +14,30 @@ export class ChatComponent implements OnInit {
 
   constructor(
     private roomService: RoomsService,
-    private messagesService: MessagesService
+    private messagesService: MessagesService,
+    private socketService:SocketService
   ) {}
 
-  public selectedRoom:Room = {id:"", name:""};
+  public selectedRoom:string = "";
 
   public currentInputText: string = "";
 
-  public messages: IMessage[] = [];
+  public messages:IMessage[] = [];
 
   ngOnInit(): void {
-
-    //Подписываемся на наблюдение изменений выбранной комнаты
-    this.roomService.selectedRoom.subscribe((value) => { this.selectedRoom = value })
-
-    //Забираем все сообщения в данной комнате
-    this.messages = this.messagesService.getMessages();
+    this.messagesService.messages.subscribe(value => this.messages = value)
+    this.roomService.selectedRoom.subscribe(value => this.selectedRoom = value)
+    this.socketService.socket?.subscribe((value) => {
+      // @ts-ignore
+      this.messagesService.messages.next(value)
+    });
   }
 
   onSubmitMessage(e:Event){
     e.preventDefault()
-    this.messagesService.onSubmitMessage(this.currentInputText, this.selectedRoom.id)
+    console.log(this.selectedRoom)
+    this.messagesService.onSubmitMessage(this.currentInputText, this.selectedRoom)
+
     this.currentInputText = "";
   }
 }

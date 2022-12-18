@@ -24,12 +24,10 @@ export class MessagesService {
   }
   
   public onSubmitMessage(textMessage:string, roomId:string){
-    this.messages.push({
-      id: '1',
-      userId: '1',
-      text: textMessage,
-      date:'',
-      roomId,
-    })
+    let socket = this.socketService.socket;
+  
+    socket?.next({text:textMessage, roomId})
+
+
   }
 }

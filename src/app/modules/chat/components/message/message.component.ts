@@ -11,10 +11,13 @@ export class MessageComponent implements OnInit {
 
   @Input() data:IMessage
 
+  text = ''
   constructor() { 
-    this.data = { id: "", userId: "", text:"",date:'',roomId:'' } 
+    this.data = { id: "", userId: "", text:"",roomId:'' } 
   }
 
   ngOnInit(): void {
+    this.text = this.data.text
+
   }
 }
