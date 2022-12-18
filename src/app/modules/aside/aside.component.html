@@ -21,7 +21,9 @@
             >
                 <b>{{room['name']}}</b>
 
-                <button [id]="room['id']" type="button" (click)="handleRemoveRoom(room['id'])">Удалить</button>
+                <button right mat-fab color="primary" [id]="room['id']" type="button" (click)="handleRemoveRoom(room['id'])">
+                    <mat-icon>delete</mat-icon>
+                </button>
             </button>
         </div>
     </div>

@@ -16,14 +16,15 @@ export class AsideComponent implements OnInit {
   public rooms: Room[] = []
 
   public selectedIdRoom: string = '';
-
   public title: string = "Список групп";
 
   public nameNewRoom: string = ""
   
   ngOnInit(): void {
-    this.rooms = this.roomService.getAllRooms();
-    this.roomService.selectedRoom.subscribe(value => this.selectedIdRoom = value.id )
+    this.roomService.getAllRooms();
+    this.roomService.rooms.subscribe((value) => { this.rooms = value} );
+  
+
   }
 
   public handleSelectRoom(id: string){
@@ -36,6 +37,6 @@ export class AsideComponent implements OnInit {
 
   public handleRemoveRoom(id: string){
     this.roomService.onRemoveRoom(id)
-    this.rooms = this.roomService.getAllRooms();
+    this.roomService.rooms.subscribe((value) => this.rooms = value );
   }
 }

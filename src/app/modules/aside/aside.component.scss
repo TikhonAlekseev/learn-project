@@ -20,10 +20,10 @@
     &_item{
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 20px;
         border: 1px solid #000;
         margin-bottom: 20px;
-        cursor: pointer;
 
         &:hover{
             background-color: rgb(105, 98, 98);

@@ -1,5 +1,5 @@
-<div class="chat" *ngIf="selectedRoom.name; else default">
-    <h1>Выбран чат: {{selectedRoom.name}}</h1>
+<div class="chat">
+    <h1>Выбран чат: {{selectedRoom}}</h1>
     <div class="chat_content">
         <chat-message *ngFor="let message of messages" [data]="message"></chat-message>
     </div>
