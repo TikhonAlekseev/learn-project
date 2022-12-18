@@ -4,8 +4,8 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { MainComponent } from './pages/main/main.component';
 
 const routes: Routes = [
-  {path:'login',component:AuthComponent},
-  {path:'',component:MainComponent},
+  { path:'login', component: AuthComponent },
+  { path:'', component: MainComponent },
 ];
 
 @NgModule({

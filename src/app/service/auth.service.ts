@@ -18,7 +18,6 @@ export class AuthService implements IAuthService{
   isAuth:boolean = false;
 
   login(user: UserData){
-    console.log(user,'user')
   };
 
   logout(user: UserData){};
