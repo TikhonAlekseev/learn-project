@@ -1,6 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Room } from '../types';
+import { MessagesService } from 'src/app/service/messages.service';
+import { SocketService } from './socket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,39 +11,34 @@ import { Room } from '../types';
 
 export class RoomsService {
 
-  constructor() { }
+  constructor(
+    private http:HttpClient,
+    private messagesService: MessagesService,
+  ) { }
+ 
+  public selectedRoom = new BehaviorSubject<string>("");
+  public rooms = new BehaviorSubject<Room[]>([]);
 
-  //Создал строку для выбранной комнаты в виде объекта за изменением которого наблюдают компоненты
-  public selectedRoom = new Subject<Room>();
-
-  private rooms = [
-    {id:"1", name:"Первая комната"},
-    {id:"2", name:"Вторая комната"},
-    {id:"3", name:"Третья комната"},
-    {id:"4", name:"Четвертая комната"},
-    {id:"5", name:"Пятая комната"},
-    {id:"6", name:"Шестая комната"},
-    {id:"7", name:"Седьмая комната"},
-    {id:"8", name:"Восьмая комната"},
-    {id:"9", name:"Девятая комната"},
-  ];
-
-  public getAllRooms(): Room[] {
-    return this.rooms
+  public getAllRooms(): void {
+    this.http.get<Room[]>('http://localhost:3000/api/rooms').subscribe((value)=>{
+    this.rooms.next(value);
+    });
   }
 
   public onSelectRoom(id:string):void {
-    this.selectedRoom.next(this.rooms.find(item => item.id === id) as Room)
+    this.selectedRoom.next(id)
+    this.messagesService.getMessages(id)
   }
 
   public onCreatedRoom(nameRoom:string){
-    this.rooms.push({
-      id:`${this.rooms.length + 1}`,
-      name:nameRoom,
+    this.http.post(`http://localhost:3000/api/rooms/add`,{ name:nameRoom }).subscribe(() => {
+      this.getAllRooms()
     })
   }
 
   public onRemoveRoom(id:string){
-    this.rooms = this.rooms.filter(room => room.id !== id )
+    this.http.delete(`http://localhost:3000/api/rooms/remove/${id}`).subscribe(() => {
+      this.getAllRooms()
+    })
   }
 }
