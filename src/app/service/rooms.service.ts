@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Room } from '../types';
 import { MessagesService } from 'src/app/service/messages.service';
-import { SocketService } from './socket.service';
+import { API_URL } from '../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class RoomsService {
   public rooms = new BehaviorSubject<Room[]>([]);
 
   public getAllRooms(): void {
-    this.http.get<Room[]>('http://localhost:3000/api/rooms').subscribe((value)=>{
+    this.http.get<Room[]>(`${API_URL}/rooms`).subscribe((value)=>{
     this.rooms.next(value);
     });
   }
@@ -31,13 +31,13 @@ export class RoomsService {
   }
 
   public onCreatedRoom(nameRoom:string){
-    this.http.post(`http://localhost:3000/api/rooms/add`,{ name:nameRoom }).subscribe(() => {
+    this.http.post(`${API_URL}/rooms/add`,{ name:nameRoom }).subscribe(() => {
       this.getAllRooms()
     })
   }
 
   public onRemoveRoom(id:string){
-    this.http.delete(`http://localhost:3000/api/rooms/remove/${id}`).subscribe(() => {
+    this.http.delete(`${API_URL}/rooms/remove/${id}`).subscribe(() => {
       this.getAllRooms()
     })
   }

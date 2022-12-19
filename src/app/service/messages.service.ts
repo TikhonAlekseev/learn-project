@@ -10,7 +10,10 @@ import { SocketService } from './socket.service';
 
 export class MessagesService {
 
-  constructor(private http:HttpClient, private socketService:SocketService) { }
+  constructor(
+    private http:HttpClient, 
+    private socketService:SocketService
+  ) { }
 
   public messages = new BehaviorSubject<IMessage[]>([])
 
@@ -24,7 +27,5 @@ export class MessagesService {
     let socket = this.socketService.socket;
   
     socket?.next({text:textMessage, roomId})
-
-
   }
 }
