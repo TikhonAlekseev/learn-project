@@ -17,8 +17,7 @@ export class AuthService implements IAuthService{
 
   isAuth:boolean = false;
 
-  login(user: UserData){
-  };
+  login(user: UserData){};
 
   logout(user: UserData){};
 

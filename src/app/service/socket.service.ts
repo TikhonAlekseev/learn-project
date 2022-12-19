@@ -8,7 +8,7 @@ import { IMessage } from './../types';
 
 export class SocketService {
 
-  socket:WebSocketSubject<IMessage| {message:string}> | null = null;
+  socket:WebSocketSubject<IMessage> | null = null;
 
   constructor() { }
 

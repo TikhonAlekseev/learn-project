@@ -1,4 +1,6 @@
 .chat{
+    margin: auto;
+    text-align: center;
     border: 1px solid #000;
     padding: 20px;
 
@@ -9,6 +11,11 @@
         border: 1px solid #000;
         margin-bottom: 20px;
         height: 500px;
+    }
+
+    &__default-window{
+        border: 1px solid #000;
+        padding: 2rem;
     }
 }
 

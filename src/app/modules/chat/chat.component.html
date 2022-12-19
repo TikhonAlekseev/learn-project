@@ -1,4 +1,4 @@
-<div class="chat">
+<div class="chat" *ngIf="selectedRoom; else default">
     <h1>Выбран чат: {{selectedRoom}}</h1>
     <div class="chat_content">
         <chat-message *ngFor="let message of messages" [data]="message"></chat-message>
@@ -10,5 +10,7 @@
 </div>
 
 <ng-template #default >
-    <h1>Выберите комнату для общения</h1>
+    <div class="chat__default-window">
+        <h1>Выберите комнату для общения</h1>
+    </div>
 </ng-template>

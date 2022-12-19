@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject} from 'rxjs';
 import { Room } from '../types';
 import { MessagesService } from 'src/app/service/messages.service';
 import { API_URL } from '../constants';

@@ -6,16 +6,10 @@ export interface IMessage{
     roomId:string,
 }
 
-export interface IUser {
-    userId:string,
-    name:string,
-}
-
 export interface Room {
     id:string,
     name:string,
 }
-
 
 export type UserData = {
     name?:string,
