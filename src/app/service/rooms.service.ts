@@ -16,7 +16,7 @@ export class RoomsService {
     private messagesService: MessagesService,
   ) { }
  
-  public selectedRoom = new BehaviorSubject<string>("");
+  public selectedRoom = new BehaviorSubject<Room | null>(null);
   public rooms = new BehaviorSubject<Room[]>([]);
 
   public getAllRooms(): void {
@@ -26,8 +26,12 @@ export class RoomsService {
   }
 
   public onSelectRoom(id:string):void {
-    this.selectedRoom.next(id)
-    this.messagesService.getMessages(id)
+    const currentRoom = this.rooms.value.find((room) => room.id === id)
+
+    if(currentRoom){
+      this.selectedRoom.next(currentRoom)
+      this.messagesService.getMessages(id)
+    }
   }
 
   public onCreatedRoom(nameRoom:string){

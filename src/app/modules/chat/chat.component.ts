@@ -18,7 +18,7 @@ export class ChatComponent implements OnInit {
     private socketService:SocketService
   ) {}
 
-  public selectedRoom:string = "";
+  public selectedRoom:Room | null = null;
 
   public currentInputText: string = "";
 
@@ -35,9 +35,8 @@ export class ChatComponent implements OnInit {
 
   onSubmitMessage(e:Event){
     e.preventDefault()
-    console.log(this.selectedRoom)
-    this.messagesService.onSubmitMessage(this.currentInputText, this.selectedRoom)
 
+    this.messagesService.onSubmitMessage(this.currentInputText, this.selectedRoom?.id as string)
     this.currentInputText = "";
   }
 }
