@@ -3,7 +3,6 @@ import { MessagesService } from 'src/app/service/messages.service';
 import { RoomsService } from 'src/app/service/rooms.service';
 import { SocketService } from 'src/app/service/socket.service';
 import { IMessage, Room } from 'src/app/types';
-import { WebSocketSubject } from 'rxjs/webSocket';
 
 @Component({
   selector: 'chat',
@@ -28,8 +27,9 @@ export class ChatComponent implements OnInit {
     this.messagesService.messages.subscribe(value => this.messages = value)
     this.roomService.selectedRoom.subscribe(value => this.selectedRoom = value)
     this.socketService.socket?.subscribe((value) => {
-      // @ts-ignore
-      this.messagesService.messages.next(value)
+
+      const arrayLastMessages = this.messagesService.messages.value
+      this.messagesService.messages.next([...arrayLastMessages, value])
     });
   }
 
