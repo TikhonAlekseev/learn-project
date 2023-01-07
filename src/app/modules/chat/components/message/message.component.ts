@@ -14,9 +14,7 @@ export class MessageComponent implements OnInit {
 
   isCurrentUser = false;
 
-  constructor(private authService:AuthService) { 
-    console.log(this.data)
-  }
+  constructor(private authService:AuthService){}
 
   ngOnInit(): void {
     this.isCurrentUser = this.authService.currentUser.value.id === this.data.user.id;

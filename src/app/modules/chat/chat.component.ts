@@ -15,7 +15,7 @@ export class ChatComponent implements OnInit {
     private roomService: RoomsService,
     private messagesService: MessagesService,
     private socketService:SocketService
-  ) {}
+  ){}
 
   public selectedRoom:Room | null = null;
 
