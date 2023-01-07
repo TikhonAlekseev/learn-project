@@ -1,3 +1,13 @@
-<div class="message">
-    <span>{{data.text}}</span>
+<div 
+    class="message-wrapper" 
+    [class.message-wrapper_right-items]="isCurrentUser"
+>
+    <div class="message">
+        <div class="message__username">
+            {{data.user.username}}
+        </div>
+        <mat-divider></mat-divider>
+        <div class="message__text">{{data.text}}</div>
+    </div>
 </div>
+

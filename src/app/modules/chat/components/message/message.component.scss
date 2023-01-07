@@ -1,5 +1,28 @@
 .message{
-    padding: 20px;
-    border: 1px solid #000;
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #b3aff3;
     margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 1rem;
+    min-width: 23rem;
+    
+    &-wrapper{
+        display: flex;
+
+        &_left-items{
+           justify-content: flex-start;
+        }
+        &_right-items{
+            justify-content: flex-end;
+         }
+    }
+    &__username{
+        font-weight: 500;
+    }
+
+    &__text{
+        padding-top: 10px;
+        font-style: italic;
+    }
 }
