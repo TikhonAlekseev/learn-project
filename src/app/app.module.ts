@@ -17,6 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   //Здесь хранятся названия отдельных компонентов,каналы,директив которые используются
@@ -40,6 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     MatIconModule,
+    MatDividerModule
   ],
   //Здесь хранятся сервисы,их можно будет использовать во всем приложении
   providers: [RoomsService],
