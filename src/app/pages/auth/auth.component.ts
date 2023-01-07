@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -6,19 +6,16 @@ import { AuthService } from 'src/app/service/auth.service';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent{
 
-  constructor(private authService:AuthService) { }
-
-  ngOnInit(): void {
-  }
+  constructor(private authService:AuthService){}
 
   hasAccount = false;
 
   title:string = this.hasAccount ? 'Авторизация': 'Регистрация'
 
   userData = {
-    name:"",
+    username:"",
     email:'',
     password:''
   }
@@ -31,5 +28,4 @@ export class AuthComponent implements OnInit {
     const {email,password} = this.userData;
     this.authService.login({ email,password })
   }
-
 }
