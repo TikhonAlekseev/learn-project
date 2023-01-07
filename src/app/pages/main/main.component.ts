@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/service/auth.service';
+import { SocketService } from '../../service/socket.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit{
 
-  constructor(private authService:AuthService){
-    this.isAuth = this.authService.isAuth;
+  constructor(
+    private socketService:SocketService
+  ){}
+
+  ngOnInit(){
+    this.socketService.connection('ws://localhost:3000/socket');
   }
 
-  isAuth = false;
-
-  ngOnInit(): void {
+  ngOnDestroy(){
+    this.socketService.socket?.complete();
   }
-
 }
