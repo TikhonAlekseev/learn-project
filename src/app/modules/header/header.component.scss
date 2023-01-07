@@ -1,7 +1,8 @@
 .header{
     display: flex;
     justify-content: space-between;
-    border: 1px solid #000;
+    align-items: center;
+    background-color: #b3aff3;
     padding: 20px;
     margin-bottom: 20px;
 
@@ -9,9 +10,15 @@
         margin: 0;
     }
 }
-.account{
+
+.logo{
+    font-size: 24px;
+}
+.account {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
 
     &__name{
         margin-right: 20px;

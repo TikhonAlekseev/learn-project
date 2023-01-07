@@ -1,8 +1,7 @@
 <div class="header">
     <div class="logo">Онлайн чат</div>
     <div class="account">
-        <div class="account__name">User</div>
-        <button mat-stroked-button color="primary" *ngIf="!isAuth" class="button" class="account__button">Выйти</button>
-        <button mat-stroked-button color="primary" *ngIf="isAuth" type="button" class="account__button">Войти</button>
+        <div class="account__name">{{username}}</div>
+        <button mat-raised-button color="primary" (click)="handleLogout()" class="button" class="account__button">Выйти</button>
     </div>
 </div>
