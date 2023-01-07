@@ -14,7 +14,7 @@ export class RoomsService {
   constructor(
     private http:HttpClient,
     private messagesService: MessagesService,
-  ) { }
+  ) {}
  
   public selectedRoom = new BehaviorSubject<Room | null>(null);
   public rooms = new BehaviorSubject<Room[]>([]);
@@ -41,6 +41,9 @@ export class RoomsService {
   }
 
   public onRemoveRoom(id:string){
+    if(id === this.selectedRoom.value?.id){
+      this.selectedRoom.next(null)
+    }
     this.http.delete(`${API_URL}/rooms/remove/${id}`).subscribe(() => {
       this.getAllRooms()
     })
