@@ -1,27 +1,35 @@
 <div class="aside">
     <div class="aside_header">
-        <h2 *ngIf="rooms.length > 0; else default">{{title}}</h2>
-        <ng-template #default>
-            <h2>Список комнат пуст</h2>
-        </ng-template>
-        <button type="button" (click)="handleCreateRoom()">
-            Создать комнату
-        </button>
-        <input type="text" name="room" [(ngModel)]="nameNewRoom">
+        <h2>{{title}}</h2>
+        <div class="aside__buttons">
+            <button mat-stroked-button color="primary" type="button" (click)="handleCreateRoom()">
+                Создать комнату
+            </button>
+            <mat-form-field  appearance="outline" class="example-full-width">
+                <mat-label>Название комнаты</mat-label>
+                <input matInput [(ngModel)]="nameNewRoom" name="room" placeholder="Нзвание комнаты">
+            </mat-form-field>
+        </div>
     </div>
     
     <div class="aside_content">
-        <div class="rooms_list">
-            <button 
-                class="rooms_list_item"
-                [class.rooms_list_item_selected]="room['id'] === selectedIdRoom"
+        <div class="rooms-list">
+            <button
+                class="rooms-list__item"
+                [class.rooms-list__item_selected]="room['id'] === selectedIdRoom"
                 *ngFor="let room of rooms" 
                 [id]="room['id']"
                 (click)="handleSelectRoom(room['id'])"
             >
-                <b>{{room['name']}}</b>
+                <div>{{room['name']}}</div>
 
-                <button right mat-fab color="primary" [id]="room['id']" type="button" (click)="handleRemoveRoom(room['id'])">
+                <button
+                    class="button-remove"
+                    mat-fab color="primary" 
+                    [id]="room['id']" 
+                    type="button" 
+                    (click)="handleRemoveRoom($event, room['id'])"
+                >
                     <mat-icon>delete</mat-icon>
                 </button>
             </button>

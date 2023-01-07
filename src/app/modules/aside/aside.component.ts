@@ -14,17 +14,13 @@ export class AsideComponent implements OnInit {
   constructor(private roomService: RoomsService) { }
 
   public rooms: Room[] = []
-
   public selectedIdRoom: string = '';
   public title: string = "Список групп";
-
   public nameNewRoom: string = ""
   
   ngOnInit(): void {
     this.roomService.getAllRooms();
-    this.roomService.rooms.subscribe((value) => { this.rooms = value} );
-  
-
+    this.roomService.rooms.subscribe((value) => { this.rooms = value});
   }
 
   public handleSelectRoom(id: string){
@@ -32,10 +28,17 @@ export class AsideComponent implements OnInit {
   }
 
   public handleCreateRoom(){
+    if(!this.nameNewRoom){
+      alert("Неправильно введено название группы")
+      return
+    }
+
     this.roomService.onCreatedRoom(this.nameNewRoom)
+    this.nameNewRoom = "";
   }
 
-  public handleRemoveRoom(id: string){
+  public handleRemoveRoom(event:Event, id: string){
+    event.stopPropagation();
     this.roomService.onRemoveRoom(id)
     this.roomService.rooms.subscribe((value) => this.rooms = value );
   }
