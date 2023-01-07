@@ -8,17 +8,17 @@ import { SocketService } from './service/socket.service';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent  implements OnInit{
+export class AppComponent  implements OnInit {
 
   constructor(
       private authService:AuthService,
       private socketService:SocketService
-  ){
-    this.isAuth = this.authService.isAuth;
-  }
-  ngOnInit(): void {
-    this.socketService.connection('ws://localhost:3000/socket');
+  ){}
+  
+  ngOnInit(){
+    if(localStorage.getItem('token')){
+      this.authService.checkAuth();
+    }
   }
 
-  isAuth = false;
 }
